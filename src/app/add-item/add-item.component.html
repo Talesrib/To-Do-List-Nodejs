@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <div class="row">
+        <div class="col">
+            <input type="text" id="name" name="name" class="form-control" placeholder="New Item" ngModel required #nameCtrl="ngModel">
+        </div>
+        <div class="col">
+            <input type="text" id="list" name="list" class="form-control" placeholder="Category" ngModel>
+        </div>
+        <span class="help-block" *ngIf="nameCtrl.invalid && nameCtrl.touched">Please enter a Item name!</span>
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Add Item</button>
+</form>

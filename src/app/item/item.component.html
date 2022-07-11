@@ -1,0 +1,10 @@
+
+<li class="list-group-item d-flex justify-content-between align-items-center">
+    
+    <button class="btn" (click)="updateStatus()">{{status}}</button>
+    {{item.name}}
+    <div>
+        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-danger" (click)="delete()">Del</button>
+    </div>
+</li>
