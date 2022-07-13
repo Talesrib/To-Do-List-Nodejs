@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ItemService } from '../item.service';
+import { TabsComponent } from '../tabs/tabs.component';
 
 @Component({
   selector: 'app-item',
@@ -9,7 +10,7 @@ import { ItemService } from '../item.service';
 export class ItemComponent implements OnInit {
   @Input() item: any;
   status : any;
-  constructor(private itemService : ItemService) { 
+  constructor(private itemService : ItemService, private tab : TabsComponent) { 
   }
   
   ngOnInit(): void {
@@ -29,8 +30,8 @@ export class ItemComponent implements OnInit {
   }
 
   delete() {
-    this.itemService.deleteItem(this.item._id).subscribe((response : any) => {
-      console.log(response);
+    this.itemService.deleteItem(this.item._id).subscribe(() => {
+      this.tab.refresh();
     });
   }
 

@@ -11,6 +11,7 @@ import { ItemComponent } from './item/item.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { EditPageComponent } from './pages/edit-page/edit-page.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     AddItemComponent,
     HeaderComponent,
     LoginPageComponent,
+    EditPageComponent,
   ],
   imports: [
     BrowserModule,

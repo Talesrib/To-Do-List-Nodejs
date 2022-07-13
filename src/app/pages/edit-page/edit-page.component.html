@@ -1,0 +1,13 @@
+<form  (ngSubmit)="update(form)" #form="ngForm">
+    <div class="row">
+        <div class="col">
+            <input type="text" id="name" name="name" class="form-control" placeholder="Name" ngModel required #nameCtrl="ngModel">
+        </div>
+        <div class="col">
+            <input type="text" id="list" name="list" class="form-control" placeholder="Category" ngModel required #categoryCtrl="ngModel">
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="nameCtrl.invalid && categoryCtrl.invalid">Update Task</button>
+    <button class="btn btn-primary" type="button" routerLink="">Cancel</button>
+</form>
+

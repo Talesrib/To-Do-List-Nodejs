@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ItemService } from '../item.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { ItemService } from '../item.service';
   styleUrls: ['./add-item.component.css']
 })
 export class AddItemComponent implements OnInit {
-  constructor(private itemService : ItemService) {
+  constructor(private router: Router, private itemService : ItemService) {
     
   }
 
@@ -21,7 +22,10 @@ export class AddItemComponent implements OnInit {
     this.itemService.addItem(formObject.value).subscribe((response : any) => {
       console.log(response);
     });
-    this.itemService.getItem();
+    this.router.navigate(['/']).then(() => {
+      window.location.reload();
+    });
+    
   };
 
 }

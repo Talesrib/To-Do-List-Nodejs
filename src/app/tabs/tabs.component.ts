@@ -16,9 +16,14 @@ export class TabsComponent implements OnInit {
 
    
    ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
     this.itemService.getItem().subscribe((tasks : any) => {
       this.tasks = tasks;
     });
+    this.list = [];
   }
 
   getList() {
@@ -30,7 +35,6 @@ export class TabsComponent implements OnInit {
   }
 
   getItem() {
-    this.list = [];
     this.tasks.forEach((item : any) => {
       if (!this.list.includes(item.list) && item.list) {
         this.list.push(item.list);

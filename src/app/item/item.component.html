@@ -4,7 +4,7 @@
     <button class="btn" (click)="updateStatus()">{{status}}</button>
     {{item.name}}
     <div>
-        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-primary" routerLink="edit-item/{{item._id}}">Edit</button>
         <button class="btn btn-danger" (click)="delete()">Del</button>
     </div>
 </li>
