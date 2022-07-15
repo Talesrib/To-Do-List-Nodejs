@@ -1,0 +1,33 @@
+<div class="alert alert-danger" *ngIf="getErrors()">
+    {{errors[0].text}}
+</div>
+
+<div class="card">
+    <div class="card-body">
+
+        <form (ngSubmit)="register(form)" #form="ngForm">
+            <div class="form-outline mb-4">
+                <input type="text" name="name" id="name" class="form-control" placeholder="Name" ngModel required/>
+            </div>
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input type="email" name="email" id="email" class="form-control" placeholder="Email Adress" ngModel required/>
+            </div>
+          
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <input type="password" name="password" id="password" class="form-control" placeholder="Password"ngModel required/>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="password" name="password2" id="password2" class="form-control" placeholder="Repeat password"ngModel required/>
+            </div>
+          
+        
+          
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid">Sign in</button>
+          </form>
+    </div>
+
+</div>

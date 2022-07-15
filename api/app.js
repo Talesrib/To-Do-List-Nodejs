@@ -8,17 +8,23 @@ const {mongoose} = require('./mongoose');
 
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const flash = require('connect-flash');
 
 Task = require('./models/todoListModel')
-app.use(bodyParser.json());
-app.use(cors({origin : 'http://localhost:4200'}));
-
+User = require('./models/user');
 app.use(session({
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     secret: 'bla bla bla' 
   }));
+app.use(flash());
+
+
   
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json());
+app.use(cors({origin : 'http://localhost:4200'}));
+
 passport.use(new LocalStrategy(
     function(username, password, done) {
         if(username === "admin" && password === "admin"){
@@ -97,6 +103,25 @@ app.post('/tasks', (req,res) =>{
         res.send(removedTaskDoc);
     })
 });
+
+app.post('/register', (req, res) => {
+    User.findOne({email: req.body.email}).then((user) => {
+        if(user){
+            console.log("Already exists this user in the system");
+        } else {
+            const newUser = new User({
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password
+            }).save().then((userDoc) =>{
+        
+                res.send(userDoc);
+            })
+        }
+    }).catch((err) => {
+        console.log("An error has ocurred");
+    })
+})
   
 app.listen(3000, () => {
     console.log("Server is listening on port 3000")
