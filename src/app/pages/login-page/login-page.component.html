@@ -1,13 +1,14 @@
-<form class="row g-3">
+<h3>Login:</h3>
+<form class="row g-3" (ngSubmit)="login(form)" #form="ngForm">
     
     <div class="col-auto">
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" ngModel required>
     </div>
     <div class="col-auto">
       <label for="inputPassword2" class="visually-hidden">Password</label>
-      <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+      <input type="password" name="password" class="form-control" id="inputPassword2" placeholder="Password" ngModel required>
     </div>
     <div class="col-auto">
-      <button type="submit" class="btn btn-primary mb-3">Login</button>
+      <button type="submit" class="btn btn-primary mb-3" [disabled]="form.invalid">Login</button>
     </div>
   </form>
